@@ -1,6 +1,6 @@
 <script>
 	import App from './App.svelte';
-	let a = 1, b = 2, c = 3, d = 4, e = 5;
+	let a = 1, b = 2, c = 3, d = 4, e = 5, disabled = false;
 	let f = { foo: 1 };
 
 	function updateProps() {
@@ -16,10 +16,21 @@
 	function updateSpread2() {
 		f.bar = 2;
 	}
+
+	function toggleDisabled() {
+		disabled = !disabled;
+	}
+
+	function resetRest () {
+		d = 4;
+	}
 </script>
 
-<App {a} {b} {c} {d} {e} {...f} />
+<App {a} {b} {c} {d} {e} {disabled} {...f} />
 <button on:click={updateProps}></button>
 <button on:click={updateRest}></button>
 <button on:click={updateSpread}></button>
 <button on:click={updateSpread2}></button>
+<button on:click={toggleDisabled}></button>
+<button on:click={resetRest}></button>
+<button on:click={toggleDisabled}></button>
